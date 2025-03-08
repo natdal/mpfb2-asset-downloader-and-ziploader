@@ -63,47 +63,177 @@ DOWNLOAD_DIR = "your/download/directory"  # Temporary download path / 임시 다
 LICENSE_TYPES = ["cc0", "ccby"]
 ```
 
-## Usage / 사용 방법
+## Detailed Usage Guide / 상세 사용 가이드
 
-### 1. Asset Pack Downloads / 에셋팩 다운로드
-
-[EN] 1. Open a terminal/command prompt and navigate to the script directory:
-[KR] 1. 터미널/명령 프롬프트를 열고 스크립트 디렉토리로 이동합니다:
-```bash
-cd scripts
-```
-
-[EN] 2. Run the download script:
-[KR] 2. 다운로드 스크립트를 실행합니다:
-```bash
-python download_assets.py
-```
+### Step 1: Initial Setup / 초기 설정
 
 [EN]
-- All asset packs will be downloaded and automatically categorized in the specified directory
-- Progress will be displayed in the terminal
-- Download time may vary depending on network status
+1. Make sure you have installed:
+   - Blender 4.0 or higher
+   - MPFB2 addon (installed and activated in Blender)
+   - Python 3.7 or higher
+   - requests library (open terminal/command prompt and run: `pip install requests`)
+
+2. Create a directory structure:
+   ```
+   any_folder/
+   ├── mpfb_data/
+   │   └── assetpacks/    # This will store downloaded assets
+   └── download_temp/     # Temporary directory for downloads
+   ```
+
+3. Copy `config.py.example` to `config.py` and edit it:
+   - Set `ASSET_DIR` to your assetpacks directory path
+   - Set `DOWNLOAD_DIR` to your temporary download directory path
+   Example:
+   ```python
+   ASSET_DIR = "C:/Users/YourName/Documents/mpfb_data/assetpacks"  # Use forward slashes
+   DOWNLOAD_DIR = "C:/Users/YourName/Documents/download_temp"
+   ```
 
 [KR]
-- 모든 에셋팩이 지정된 디렉토리에 다운로드되고 자동으로 분류됩니다
-- 진행 상황이 터미널에 표시됩니다
-- 다운로드는 시간이 걸릴 수 있으며, 네트워크 상태에 따라 다릅니다
+1. 다음 프로그램들이 설치되어 있는지 확인하세요:
+   - Blender 4.0 이상
+   - MPFB2 애드온 (Blender에 설치 및 활성화)
+   - Python 3.7 이상
+   - requests 라이브러리 (터미널/명령 프롬프트를 열고 실행: `pip install requests`)
 
-### 2. Asset Loading in Blender / Blender에서 에셋 로드
+2. 다음과 같은 폴더 구조를 만드세요:
+   ```
+   아무_폴더/
+   ├── mpfb_data/
+   │   └── assetpacks/    # 다운로드된 에셋이 저장될 폴더
+   └── download_temp/     # 임시 다운로드 폴더
+   ```
+
+3. `config.py.example`을 `config.py`로 복사하고 수정하세요:
+   - `ASSET_DIR`을 assetpacks 폴더 경로로 설정
+   - `DOWNLOAD_DIR`을 임시 다운로드 폴더 경로로 설정
+   예시:
+   ```python
+   ASSET_DIR = "C:/Users/사용자이름/Documents/mpfb_data/assetpacks"  # 슬래시(/) 사용
+   DOWNLOAD_DIR = "C:/Users/사용자이름/Documents/download_temp"
+   ```
+
+### Step 2: Downloading Assets / 에셋 다운로드
 
 [EN]
-1. Launch Blender and ensure MPFB2 addon is activated
-2. Open Blender's text editor and load the `bulk_load_assets.py` script
-3. Run the script
-4. You can check progress in System Console (Window + Alt + C)
-5. Restart Blender after all assets are loaded
+1. Open terminal/command prompt
+2. Navigate to the scripts directory:
+   ```bash
+   cd path/to/your/scripts/folder
+   ```
+3. Run the download script:
+   ```bash
+   python download_assets.py
+   ```
+4. Wait for the download to complete:
+   - You'll see progress for each file
+   - Total download size is about 3GB
+   - Downloads are saved automatically in your configured asset directory
 
 [KR]
-1. Blender를 실행하고 MPFB2 애드온이 활성화되어 있는지 확인합니다
-2. Blender의 텍스트 에디터를 열고 `bulk_load_assets.py` 스크립트를 불러옵니다
-3. 스크립트를 실행합니다
-4. System Console(Window + Alt + C)에서 진행 상황을 확인할 수 있습니다
-5. 모든 에셋이 로드되면 Blender를 재시작합니다
+1. 터미널/명령 프롬프트를 엽니다
+2. scripts 폴더로 이동합니다:
+   ```bash
+   cd scripts폴더의/경로
+   ```
+3. 다운로드 스크립트를 실행합니다:
+   ```bash
+   python download_assets.py
+   ```
+4. 다운로드가 완료될 때까지 기다립니다:
+   - 각 파일별 진행상황이 표시됩니다
+   - 전체 다운로드 크기는 약 3GB입니다
+   - 다운로드된 파일은 설정한 에셋 디렉토리에 자동으로 저장됩니다
+
+### Step 3: Loading Assets in Blender / Blender에서 에셋 로드
+
+[EN]
+1. Open Blender
+2. Make sure MPFB2 addon is activated:
+   - Go to `Edit > Preferences > Add-ons`
+   - Search for "MPFB"
+   - Check the box next to "MakeHuman Plugin For Blender 2"
+
+3. Open Text Editor in Blender:
+   - Click on the top bar of any panel
+   - Select `Text Editor` from the dropdown menu
+   - Or split your view and change one panel to Text Editor
+
+4. Load the script:
+   - Click `Text > Open`
+   - Navigate to where you saved `bulk_load_assets.py`
+   - Select and open the file
+
+5. Run the script:
+   - Click the "Run Script" button (▶️) in the Text Editor
+   - Or press `Alt + P`
+
+6. Monitor progress:
+   - Press `Window + Alt + C` to open the System Console
+   - Watch the loading progress
+   - Wait for the "Processing complete!" message
+
+7. After loading completes:
+   - Save your Blender file
+   - Close Blender completely
+   - Restart Blender to see all loaded assets
+
+[KR]
+1. Blender를 실행합니다
+2. MPFB2 애드온이 활성화되어 있는지 확인:
+   - `Edit > Preferences > Add-ons` 메뉴로 이동
+   - "MPFB" 검색
+   - "MakeHuman Plugin For Blender 2" 옆의 체크박스 활성화
+
+3. Blender의 텍스트 에디터 열기:
+   - 아무 패널의 상단 바를 클릭
+   - 드롭다운 메뉴에서 `Text Editor` 선택
+   - 또는 화면을 분할하고 한 패널을 Text Editor로 변경
+
+4. 스크립트 불러오기:
+   - `Text > Open` 클릭
+   - `bulk_load_assets.py` 파일이 있는 위치로 이동
+   - 파일 선택 후 열기
+
+5. 스크립트 실행:
+   - 텍스트 에디터의 "Run Script" 버튼(▶️) 클릭
+   - 또는 `Alt + P` 키 누르기
+
+6. 진행상황 모니터링:
+   - `Window + Alt + C`를 눌러 시스템 콘솔 열기
+   - 로딩 진행상황 확인
+   - "Processing complete!" 메시지가 나올 때까지 대기
+
+7. 로딩 완료 후:
+   - Blender 파일 저장
+   - Blender 완전히 종료
+   - Blender 재시작하여 로드된 에셋 확인
+
+### Troubleshooting / 문제 해결
+
+[EN]
+Common download issues:
+- "Permission denied": Run terminal as administrator
+- "Directory not found": Check if your paths in config.py exist
+- "ModuleNotFoundError: No module named 'requests'": Run `pip install requests`
+
+Common loading issues:
+- "MPFB operator not found": Check if MPFB2 addon is activated
+- "File not found": Check if your asset directory path is correct
+- Blender becomes unresponsive: Try loading fewer assets at once
+
+[KR]
+자주 발생하는 다운로드 문제:
+- "Permission denied": 터미널을 관리자 권한으로 실행
+- "Directory not found": config.py의 경로가 실제로 존재하는지 확인
+- "ModuleNotFoundError: No module named 'requests'": `pip install requests` 실행
+
+자주 발생하는 로드 문제:
+- "MPFB operator not found": MPFB2 애드온이 활성화되어 있는지 확인
+- "File not found": 에셋 디렉토리 경로가 올바른지 확인
+- Blender가 응답하지 않음: 한 번에 더 적은 수의 에셋을 로드해보기
 
 ## Directory Structure / 디렉토리 구조
 
